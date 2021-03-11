@@ -15,7 +15,7 @@ To be populated
 
 * **Exploratory data analysis** of semi-structured and unstructured data gathered from the Google Play store
 * **Linear regression** to predict the average user rating of apps 
-* **Sentiment analysis** of customer reviews as an input into the regression analysis
+* **Sentiment analysis** of user reviews as an input into the regression analysis
 * **Recommender system** for users looking for interesting apps
 
 ## Findings
