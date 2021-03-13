@@ -58,12 +58,12 @@ elif choice == "I'm looking for a new app!":
 
         
     # Format inputs
-    user_app_description = st.text_input("In a few words, describe the type of app you are looking for", '')
+    user_app_description = st.text_input("In a few words, describe the type of app you are looking for:", '')
     text = [user_app_description]
     tt = nmf_model.transform(vectorizer.transform(text))
-    rec_array = pairwise_distances(tt,doc_topic,metric='cosine').argsort()
-    recs = rec_array[0]
-    name = df_apps_topics.loc[recs]
+    rec_array = pairwise_distances(tt.reshape(1,-1),doc_topic,metric='cosine').argsort()
+    recs = list(rec_array[0][0:20])
+    name = df_apps_topics.iloc[recs]
     name = name[0:15]
     
     
