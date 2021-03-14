@@ -4,6 +4,8 @@ import numpy as np
 import pandas as pd
 
 import plotly.graph_objects as go
+import plotly.express as px
+
 import dash
 import dash_table
 import dash_core_components as dcc
@@ -25,9 +27,11 @@ with open('vectorizer.pkl', 'rb') as read_file:
 with open('doc_topic_array.pkl', 'rb') as read_file:
     doc_topic = pickle.load(read_file)
     
+df = pd.read_csv('04-data/preprocessed_app_data.csv')
+    
 ## Format app layout
     
-st.set_page_config(layout='wide',initial_sidebar_state='auto')
+st.set_page_config(layout='wide',initial_sidebar_state='collapsed')
 
 choice = st.sidebar.radio("Navigation",('Home','App analysis',"I'm looking for a new app!"))
 
@@ -46,16 +50,26 @@ if choice == 'Home':
     '''
     '''
     \n
-    This site was created by Tawney Lott. You can find her on [GitHub](https://github.com/tawney-kirkland) and [LinkedIn](https://www.linkedin.com/in/tawney-lott-68230797/).
+    This site was created by Tawney Lott. You can find her on [GitHub](https://github.com/tawney-kirkland), [LinkedIn](https://www.linkedin.com/in/tawney-lott-68230797/) and [Medium](https://tawneyslott.medium.com/).
     '''
     
 elif choice == 'App analysis':
     st.title('Understanding the apps included in the analysis')
-    st.write('Text goes here')
+    
+    col1, col2 = st.beta_columns(2)
+    with col1:
+        col1.header("Original")
+        df2 = df.groupby('genre')['genre'].count().reset_index(name='count')
+        col1.fig = px.treemap(df2, path=['genre'], values='count')
+        st.plotly_chart(col1.fig)
+    
+    with col2:
+        col2.header("second figure goes here")
+        #col2.image(grayscale, use_column_width=True)
+
 
 elif choice == "I'm looking for a new app!":
     st.title("Use this recommender to find cool new apps")
-
         
     # Format inputs
     user_app_description = st.text_input("In a few words, describe the type of app you are looking for:", '')
