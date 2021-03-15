@@ -87,35 +87,53 @@ elif choice == "I'm looking for a new app!":
         
         ''')
     else:
+        st.spinner("Looking for apps...")
         # Add an expander
-        my_expander = st.beta_expander("Filter your recommendations", expanded=False)
+        my_expander = st.sidebar.beta_expander("Filter your recommendations here", expanded=True)
 
         with my_expander:
             apps = name['genre'].unique()
+            apps = np.insert(apps,0,'Select one',axis=0)
             app_choice = st.selectbox('App category', apps)
-            years = name["year"].unique()
-            year_choice = st.selectbox('', years) 
+            years = np.array(name["year"].unique(),dtype=object)
+            years = np.sort(years)
+            years = np.insert(years,0,'Select one',axis=0)
+            year_choice = st.selectbox('Release year', years) 
             
         st.header("Check out these apps!")
-        fig = go.Figure(data=[go.Table(
-            columnorder = [1,2],
-            columnwidth = [0.3,0.7],
-            header=dict(values=['<b>App name</b>', '<b>Summary</b>'],
-                        font = dict(color='black', size=18),
-                        fill_color = 'white',
-                        line_color = 'white',
-                        align ='left',
-                        height = 40),
-            cells=dict(values=[name.title, name.summary],
-                        font = dict(color='black', size=14),
-                        fill_color = 'white',
-                        line_color = 'white',
-                        align = 'left',
-                        height=40))
-        ])
-        
-        fig.update_layout(width=1000,height=500)
-        st.plotly_chart(fig)
-        #st.dataframe((name[['title','description']][0:20]).reset_index(drop=True))
 
-    
+        break_line = '<hr style="border:2px solid gray"> </hr>'
+        st.markdown(break_line, unsafe_allow_html = True)
+        st.write("") 
+            
+        for (idx,row) in name.iterrows():
+            if app_choice == 'Select one' and year_choice == 'Select one':
+                col1, mid, col2 = st.beta_columns([1,1,25])
+                with col1:
+                    st.image(row.loc['icon'], width=60)
+                with col2:
+                    st.subheader(row.loc['title'])
+                value = row.loc['score']
+                st.write('Stars:',round(value,2)) # Convert to stars?
+                #st.markdown("<span class='stars'>value</span>", unsafe_allow_html = True)
+                st.write(row.loc['summary'])
+                link = row.loc['url']
+                st.write("See more [here](link)")
+                st.markdown(link, unsafe_allow_html=True)# Why isn't the URL working?
+                break_line = '<hr style="border:2px solid gray"> </hr>'
+                st.markdown(break_line, unsafe_allow_html = True)
+            elif app_choice == row.loc['genre']:
+                col1, mid, col2 = st.beta_columns([1,1,25])
+                with col1:
+                    st.image(row.loc['icon'], width=60)
+                with col2:
+                    st.subheader(row.loc['title'])
+                value = row.loc['score']
+                st.write('Stars:',round(value,2)) # Convert to stars?
+                #st.markdown("<span class='stars'>value</span>", unsafe_allow_html = True)
+                st.write(row.loc['summary'])
+                st.write(row.loc['url']) # Why isn't the URL working?
+                break_line = '<hr style="border:2px solid gray"> </hr>'
+                st.markdown(break_line, unsafe_allow_html = True)
+            
+       
