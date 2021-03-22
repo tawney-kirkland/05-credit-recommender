@@ -31,7 +31,7 @@ df = pd.read_csv('04-data/preprocessed_app_data.csv')
     
 ## Format app layout
     
-st.set_page_config(layout='wide',initial_sidebar_state='collapsed')
+st.set_page_config(layout='wide',initial_sidebar_state='expanded')
 
 choice = st.sidebar.radio("Navigation",('Home','App analysis',"I'm looking for a new app!"))
 
@@ -39,7 +39,7 @@ choice = st.sidebar.radio("Navigation",('Home','App analysis',"I'm looking for a
 if choice == 'Home':
     st.title('Google Play Store: App Analysis and Recommender')
     '''
-    __About__ \n
+    \n
     With over 3 million apps listed, the Google Play store provides a rich source for understanding some of the most important features of a successful app. While this volume of apps provides exciting opportunities for users to discover hidden gems, the sheer volume can be a bit overwhelming to navigate.
     \n
     Analyzing 22,000 apps scraped from the Google Play store, this project aims to provide insights for app developers to understand what types of apps users are looking for. 
@@ -52,6 +52,8 @@ if choice == 'Home':
     \n
     This site was created by Tawney Lott. You can find her on [GitHub](https://github.com/tawney-kirkland), [LinkedIn](https://www.linkedin.com/in/tawney-lott-68230797/) and [Medium](https://tawneyslott.medium.com/).
     '''
+    
+    st.image('hands.png', width=950)
     
 elif choice == 'App analysis':
     st.title('Understanding the apps included in the analysis')
@@ -119,10 +121,10 @@ elif choice == "I'm looking for a new app!":
                 st.write(row.loc['summary'])
                 link = row.loc['url']
                 st.write("See more [here](link)")
-                st.markdown(link, unsafe_allow_html=True)# Why isn't the URL working?
+                #st.markdown(link, unsafe_allow_html=True)# Why isn't the URL working?
                 break_line = '<hr style="border:2px solid gray"> </hr>'
                 st.markdown(break_line, unsafe_allow_html = True)
-            elif app_choice == row.loc['genre']:
+            elif app_choice == row.loc['genre'] and year_choice == 'Select one':
                 col1, mid, col2 = st.beta_columns([1,1,25])
                 with col1:
                     st.image(row.loc['icon'], width=60)
@@ -132,8 +134,38 @@ elif choice == "I'm looking for a new app!":
                 st.write('Stars:',round(value,2)) # Convert to stars?
                 #st.markdown("<span class='stars'>value</span>", unsafe_allow_html = True)
                 st.write(row.loc['summary'])
-                st.write(row.loc['url']) # Why isn't the URL working?
+                link = row.loc['url']
+                st.write("See more [here](link)")
+                #st.markdown(link, unsafe_allow_html=True)# Why isn't the URL working?
                 break_line = '<hr style="border:2px solid gray"> </hr>'
                 st.markdown(break_line, unsafe_allow_html = True)
-            
-       
+            elif app_choice == row.loc['genre'] and year_choice == row.loc['year']:
+                col1, mid, col2 = st.beta_columns([1,1,25])
+                with col1:
+                    st.image(row.loc['icon'], width=60)
+                with col2:
+                    st.subheader(row.loc['title'])
+                value = row.loc['score']
+                st.write('Stars:',round(value,2)) # Convert to stars?
+                #st.markdown("<span class='stars'>value</span>", unsafe_allow_html = True)
+                st.write(row.loc['summary'])
+                link = row.loc['url']
+                st.write("See more [here](link)")
+                #st.markdown(link, unsafe_allow_html=True)# Why isn't the URL working?
+                break_line = '<hr style="border:2px solid gray"> </hr>'
+                st.markdown(break_line, unsafe_allow_html = True)
+            elif app_choice == 'Select one' and year_choice == row.loc['year']:
+                col1, mid, col2 = st.beta_columns([1,1,25])
+                with col1:
+                    st.image(row.loc['icon'], width=60)
+                with col2:
+                    st.subheader(row.loc['title'])
+                value = row.loc['score']
+                st.write('Stars:',round(value,2)) # Convert to stars?
+                #st.markdown("<span class='stars'>value</span>", unsafe_allow_html = True)
+                st.write(row.loc['summary'])
+                link = row.loc['url']
+                st.write("See more [here](link)")
+                #st.markdown(link, unsafe_allow_html=True)# Why isn't the URL working?
+                break_line = '<hr style="border:2px solid gray"> </hr>'
+                st.markdown(break_line, unsafe_allow_html = True)
