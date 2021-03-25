@@ -4,7 +4,9 @@ This repo is for Metis project 5
 
 ## Background
 
-With over 3 million apps, the Google Play store is a rich resource for app developers and users. The volume of apps is massive and has continusously grown since 2010.
+With over 3 million apps, the Google Play store is a rich resource for app developers and users. The figure below demonstrates that, despite a steep drop in 2018 as Google removed apps affected with malware, the volume of apps in the store is massive and continues to increase.
+
+<img width="827" alt="google_trend" src="https://user-images.githubusercontent.com/74927862/112487588-3a02dc00-8d53-11eb-8d4b-bc598ea10fb9.png">
 
 ## Objective
 
@@ -41,7 +43,11 @@ The figure below indicates some of the strongest positive and negative predictor
 <img width="800" alt="coefficients" src="https://user-images.githubusercontent.com/74927862/112393572-ad640980-8cd1-11eb-9fd8-52cb3f25c77d.png">
 
 #### Recommender system
-To be updated with demo video
+These methods were usedto develop a recommender system for users, shown in the demo below.
+
+https://user-images.githubusercontent.com/74927862/112487541-2ce5ed00-8d53-11eb-8bca-00062f8ee86d.mp4
+
+The recommender uses cosine similarity to return most similar apps to the keywords provided by the user. The recommendations are nice because they are similar to the search terms, but allow the user to discover cool, different apps.
 
 ## Insights
 
