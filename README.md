@@ -23,12 +23,12 @@ With over 3 million apps, the Google Play store is a rich resource for app devel
 #### Topic modeling and sentiment analysis of user reviews
 Topic modeling of approximately 2 million user reviews revealed seven core topics and the top words within each topic.
 
-<img width="910" alt="topics_table" src="https://user-images.githubusercontent.com/74927862/112393397-5f4f0600-8cd1-11eb-88df-8cc01fd85c06.png">
+<img width="900" alt="topics_table" src="https://user-images.githubusercontent.com/74927862/112393397-5f4f0600-8cd1-11eb-88df-8cc01fd85c06.png">
 
 Sentiment analysis of user reviews was used to provide an additional layer of insight across the seven topics. Below, we see that while the majority of reviews appear to be neutral, the share of negative reviews exceed positive reviews across most of the topics.
 
 
-<img width="831" alt="sentiment_by_topic" src="https://user-images.githubusercontent.com/74927862/112393532-9de4c080-8cd1-11eb-828e-fcdd6f423218.png">
+<img width="800" alt="sentiment_by_topic" src="https://user-images.githubusercontent.com/74927862/112393532-9de4c080-8cd1-11eb-828e-fcdd6f423218.png">
 
 Interestingly, The Payments topic has a larger share of negative reviews than Bugs, suggesting an opportunity to improve Payments experience.
 
@@ -38,7 +38,7 @@ The model explains 31% of variance in user ratings. On average, predictions are 
 
 The figure below indicates some of the strongest positive and negative predictors of app ratings.
 
-<img width="860" alt="coefficients" src="https://user-images.githubusercontent.com/74927862/112393572-ad640980-8cd1-11eb-9fd8-52cb3f25c77d.png">
+<img width="800" alt="coefficients" src="https://user-images.githubusercontent.com/74927862/112393572-ad640980-8cd1-11eb-9fd8-52cb3f25c77d.png">
 
 #### Recommender system
 To be updated with demo video
