@@ -8,6 +8,7 @@ With over 3 million apps, the Google Play store is a rich resource for app devel
 
 ## Objective
 
+Against this backdrop, the project aimed to address the following objectives:
 * Analyze Google Play App store data for a sample of ~ 22,000 apps to predict the user rating for each app
 * Develop an app recommendation engine using content-based filtering
 
@@ -21,16 +22,15 @@ With over 3 million apps, the Google Play store is a rich resource for app devel
 ## Findings
 
 #### Topic modeling and sentiment analysis of user reviews
-Topic modeling of approximately 2 million user reviews revealed seven core topics and the top words within each topic.
+Topic modeling of approximately 2 million user reviews revealed seven core topics and the top words within each topic, as shown in the table below. This analysis was really helpful as it enabled me to integrate details related to app experience and usability.
 
 <img width="900" alt="topics_table" src="https://user-images.githubusercontent.com/74927862/112393397-5f4f0600-8cd1-11eb-88df-8cc01fd85c06.png">
 
-Sentiment analysis of user reviews was used to provide an additional layer of insight across the seven topics. Below, we see that while the majority of reviews appear to be neutral, the share of negative reviews exceed positive reviews across most of the topics.
-
+Sentiment analysis of user reviews was used to provide an additional layer of insight across the seven topics. The figure below shows the sentiment split for each of the review topics.
 
 <img width="800" alt="sentiment_by_topic" src="https://user-images.githubusercontent.com/74927862/112393532-9de4c080-8cd1-11eb-828e-fcdd6f423218.png">
 
-Interestingly, The Payments topic has a larger share of negative reviews than Bugs, suggesting an opportunity to improve Payments experience.
+Interestingly, The Payments topic has a larger share of negative reviews than Bugs, suggesting an opportunity to improve Payments experience for the apps in this analysis.
 
 #### Predicting app ratings using linear regression
 
